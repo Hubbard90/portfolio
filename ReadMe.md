@@ -26,7 +26,7 @@ Perfume ↔ Toothpaste (Lift 3.60)
 
 **Product Bundles:**  
 I used this matric plot to reveal the best cross-selling opportunities between high-volume items: 
-<img width="604" height="278" alt="image" src="https://github.com/user-attachments/assets/821b2d08-d413-46a2-90c8-9463ebe95b8b" />
+<img width="654" height="328" alt="image" src="https://github.com/user-attachments/assets/821b2d08-d413-46a2-90c8-9463ebe95b8b" />
 
 The three product bundles I recommend:
 Toothpaste + Perfume (Lift: 3.60, Confidence: 32.40%, Support: 2.18%)
