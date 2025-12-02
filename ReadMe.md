@@ -16,7 +16,7 @@ After checking for duplicates and NAs, the features were engineered, removing th
 **Clustering**  
 *K-means:*  
 Before clustering, Principal Component Analysis was done to reduce the dimensions of the data by capturing the maximum variance of the data. Because we have 6 features, the dataset has 6 dimensions. In doing so, PCA was used to reduce the dimensions to 2 by getting the two highest variances among the Principal Components. The higher the variance, the more information we get about spending behaviour. The two PCs, along with the individual and total variance are below:  
-1. Overall Spending Magnitude – all items positively contributing to this PC.  
+1. Overall Spending Magnitude – all items positively contributing to this PC.   
 2. Food vs Household items – All food items contributing positively and household items contributing negatively.  
 <img width="465" height="58" alt="image" src="https://github.com/user-attachments/assets/cdcf9b9a-5fbc-4a82-bac0-db0b86cf2adb" />  
 
