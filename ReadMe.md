@@ -11,6 +11,7 @@ The goal when choosing the parameters would be to get a silhouette score that is
 ** Process and Methodology:**  
 After checking for duplicates and NAs, the features were engineered, removing the two categorical variables, *Channel* and *Region*, and splitting into X and y_region sets before standardisation. See below for the histogram of each variable of the X split before and after standardizing:  
 <img width="363" height="260" alt="image" src="https://github.com/user-attachments/assets/19770c0d-dcd4-4689-9cc9-9d1a92e1a751" />  
+
 <img width="373" height="259" alt="image" src="https://github.com/user-attachments/assets/510ba2ba-a1b2-4e75-aca1-8293e9632522" />  
 
 **Clustering**  
@@ -19,7 +20,8 @@ Before clustering, Principal Component Analysis was done to reduce the dimension
 1. Overall Spending Magnitude – all items positively contributing to this PC.   
 2. Food vs Household items – All food items contributing positively and household items contributing negatively.  
 <img width="465" height="58" alt="image" src="https://github.com/user-attachments/assets/cdcf9b9a-5fbc-4a82-bac0-db0b86cf2adb" />  
-<img width="400" height="311" alt="image" src="https://github.com/user-attachments/assets/32f0b05f-f1a7-42ca-bfa0-6913bbd8f6c8" />  
+<img width="400" height="311" alt="image" src="https://github.com/user-attachments/assets/32f0b05f-f1a7-42ca-bfa0-6913bbd8f6c8" />
+
 The highest silhouette score belongs to the model with 2 centroids, shown below:  
 <img width="532" height="422" alt="image" src="https://github.com/user-attachments/assets/63d8c737-7dbc-4bda-896e-86c364f6192a" />  
 
