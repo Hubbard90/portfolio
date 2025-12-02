@@ -1,10 +1,6 @@
 **Project Overview**  
-The goal of this project was to classify 28×28 grayscale images into 10 clothing categories (e.g., shirts, shoes, bags). I started with a simple dense neural network to establish a 
-baseline, then built a deeper CNN architecture that significantly improved accuracy.
-I applied techniques such as data augmentation, dropout, early stopping, and learning-rate scheduling to reduce overfitting and stabilise training.
-This project builds and compares several deep-learning models using TensorFlow/Keras to classify clothing images from the Fashion-MNIST dataset. 
-It demonstrates how convolutional neural networks (CNNs) learn spatial patterns, how model performance can be improved through regularisation and optimisation, and how to 
-design a workflow that generalises well to unseen data.
+The goal of this project was to classify 28×28 grayscale images into 10 clothing categories (e.g., shirts, shoes, bags). I started with a simple dense neural network to establish a baseline, then built a deeper CNN architecture that significantly improved accuracy.  
+I applied techniques such as data augmentation, dropout, early stopping, and learning-rate scheduling to reduce overfitting and stabilise training.This project builds and compares several deep-learning models using TensorFlow/Keras to classify clothing images from the Fashion-MNIST dataset. It demonstrates how convolutional neural networks (CNNs) learn spatial patterns, how model performance can be improved through regularisation and optimisation, and how to design a workflow that generalises well to unseen data.
 
 **Modeling Approach**  
 1. Baseline Neural Network  
