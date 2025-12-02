@@ -1,4 +1,4 @@
-<img width="464" height="226" alt="image" src="https://github.com/user-attachments/assets/c55da115-7fd4-445c-b6ad-53be281ec20b" />**Project Overview**  
+**Project Overview**  
 This project uses SAS Enterprise Miner to analyse retail purchasing behaviour across 689 stores. The goal was to segment customers into meaningful groups using clustering techniques and identify high-value product associations using market basket analysis. These insights support data-driven decisions around product bundling, store layout, pricing strategy, and targeted marketing.
 
 **Techniques & Tools Used:**  
