@@ -11,9 +11,12 @@ Using clustering and standardisation, four distinct store/customer profiles were
 Examples include:  
 Segment 1: Higher interest in Original & Stretch garments (active-wear leaning)  
 <img width="604" height="91" alt="image" src="https://github.com/user-attachments/assets/faaa56de-236d-444f-a731-2f0b43afceb6" />
-
+Segment 2: Lower purchases across all jeans categories, indicating that customers are not interested in denim products in this store. 
+<img width="601" height="89" alt="image" src="https://github.com/user-attachments/assets/0e37adc2-67e0-4838-850c-4dde488e6a39" />
 Segment 3: Strong preference for Fashion items (style-oriented customers)  
+<img width="601" height="85" alt="image" src="https://github.com/user-attachments/assets/58544237-32b3-435f-bb38-b17c472f3dab" />
 Segment 4: Prioritises Leisure items (comfort-focused customers)  
+<img width="601" height="86" alt="image" src="https://github.com/user-attachments/assets/842b6f8c-4fce-43f5-9fb6-b89dd30f54c8" />
 These profiles guide inventory planning, product placement, and targeted promotions.  
 
 **Market Basket Analysis**  
