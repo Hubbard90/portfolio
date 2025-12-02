@@ -63,3 +63,20 @@ Kernel:
 • Gamma – how far a single datapoint affects the decision boundary  
   &nbsp;o Chosen – Scale uses the formula 1/n_feature x variance, effectively adjusting to the  
   &nbsp;variance of the dataset, leading to smoother boundaries  
+
+6. K-Means Clustering (Unsupervised)
+An eblow curve was employed to check the optimal number of clusters for the K-means Model:
+<img width="578" height="425" alt="image" src="https://github.com/user-attachments/assets/a743625f-311a-440d-85b9-e01100bffe8d" />
+The number of clusters chosen for this model is two, for two reasons:
+1. The target variable is a binary classification.
+2. An elbow curve was conducted, and it was found that the highest score gain was before
+reaching 2 clusters
+While it may not have the sharpest bend or curve, the gain after two never matches
+or gets close to the score gain before. The combination of the two reasons above reinforces
+why two clusters were chosen. For cluster 0, there are 5,769 samples and for cluster 1, there
+are 13,614 samples.
+To get the average that represents each cluster, let us get the cluster prototype:
+<img width="602" height="68" alt="image" src="https://github.com/user-attachments/assets/c2947934-bac6-4923-94e7-80776f5d0c45" />
+
+The accuracy score of the clustering model is 37%, indicating that the models should be swapped, giving a score of 63%.
+
