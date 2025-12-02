@@ -36,30 +36,30 @@ Penalty:
   &nbsp;o Chosen - L1 forces some coefficients to shrink to zero, helping feature selection. This  
 was chosen as the best due to having many dummy variables; not all may contribute  
 much to prediction.  
-  o L2 shrinks coefficients but ultimately keeps them instead of reducing to zero.  
+  &nbsp;o L2 shrinks coefficients but ultimately keeps them instead of reducing to zero.  
 • C (regularisation strength):  
-  o This controls the penalty strength; the smaller the C is, the stronger the  
-regularisation is, leading to simpler models. The best score was 30, which means  
-that the model benefitted from having a weaker regularisation and a more complex  
-model.  
+  &nbsp;o This controls the penalty strength; the smaller the C is, the stronger the  
+&nbsp;regularisation is, leading to simpler models. The best score was 30, which means  
+&nbsp;that the model benefitted from having a weaker regularisation and a more complex  
+&nbsp;model.  
 • Solver:  
-  o Liblinear is better for small to medium-sized datasets  
-  o Chose – Saga works well for larger datasets. This solver was able to handle the high  
-dimensionality better than liblinear.  
+  &nbsp;o Liblinear is better for small to medium-sized datasets  
+  &nbsp;o Chose – Saga works well for larger datasets. This solver was able to handle the high  
+&nbsp;dimensionality better than liblinear.  
 
 **SVM**  
 Kernel:  
-  o Linear assumes that the dataset can be linearly separated by features  
-  o Chosen – Poly better captures datasets that have complex relationships between  
-  categorical and numerical variables, which lead to a higher accuracy.  
+  &nbsp;o Linear assumes that the dataset can be linearly separated by features  
+ &nbsp;o Chosen – Poly better captures datasets that have complex relationships between  
+  &nbsp;categorical and numerical variables, which lead to a higher accuracy.  
 • C:  
-  o Similar to Logistic Regression above. In this case, a C of 10 had the best result, which  
-  means that it is less complex and has a stronger regularisation than the Logistic  
-  Regression model.  
+  &nbsp;o Similar to Logistic Regression above. In this case, a C of 10 had the best result, which  
+  &nbsp;means that it is less complex and has a stronger regularisation than the Logistic  
+  &nbsp;Regression model.  
 • Degree - controls the complexity of the kernels  
-  o 2 captures quadratic boundaries  
-  o Chosen – 3 captures cubic boundaries, which had the right balance without  
-  overfitting the model  
+  &nbsp;o 2 captures quadratic boundaries  
+  &nbsp;o Chosen – 3 captures cubic boundaries, which had the right balance without  
+  &nbsp;overfitting the model  
 • Gamma – how far a single datapoint affects the decision boundary  
-  o Chosen – Scale uses the formula 1/n_feature x variance, effectively adjusting to the  
-  variance of the dataset, leading to smoother boundaries  
+  &nbsp;o Chosen – Scale uses the formula 1/n_feature x variance, effectively adjusting to the  
+  &nbsp;variance of the dataset, leading to smoother boundaries  
