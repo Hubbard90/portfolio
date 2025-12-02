@@ -22,8 +22,17 @@ These profiles guide inventory planning, product placement, and targeted promoti
 **Market Basket Analysis**  
 High-lift association rules revealed strong product affinities, such as:  
 Perfume ↔ Toothpaste (Lift 3.60)  
-Magazines + Candy Bars + Greeting Cards (Lift 2.8)  
-Toothpaste + Candy + Magazines (Lift 2.53)  
+<img width="371" height="80" alt="image" src="https://github.com/user-attachments/assets/9c6d477b-7ab6-40a2-90f0-857e2e1bffc5" />
+
+**Product Bundles:**  
+I used this matric plot to reveal the best cross-selling opportunities between high-volume items: 
+<img width="604" height="278" alt="image" src="https://github.com/user-attachments/assets/821b2d08-d413-46a2-90c8-9463ebe95b8b" />
+
+The three product bundles I recommend:
+Toothpaste + Perfume (Lift: 3.60, Confidence: 32.40%, Support: 2.18%)
+Magazines + Candy Bars + Greeting Cards (Lift 2.8, Confidence: 41.11%, Support: 1.67%)  
+Toothpaste + Candy + Magazines (Lift: 2.53, Confidence: 45.86%, Expected Confidence: 17.10%, Support: 1.67%)
+  
 These insights were used to design product bundles and optimise store layout for cross-selling.  
 
 **Business Impact**  
