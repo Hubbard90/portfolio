@@ -3,6 +3,9 @@ The goal of this project was to classify 28×28 grayscale images into 10 clothin
 
 I applied techniques such as data augmentation, dropout, early stopping, and learning-rate scheduling to reduce overfitting and stabilise training.This project builds and compares several deep-learning models using TensorFlow/Keras to classify clothing images from the Fashion-MNIST dataset. It demonstrates how convolutional neural networks (CNNs) learn spatial patterns, how model performance can be improved through regularisation and optimisation, and how to design a workflow that generalises well to unseen data.
 
+**Business Use Case:**  
+This CNN model can support real-world retail and e-commerce operations by automating the classification of clothing images, reducing the time and effort spent on manual product tagging. With strong generalisation and high accuracy, it can help maintain consistent product categorisation across large inventories, improve search and filtering, and strengthen recommendation systems by linking visually similar items, all of which lead to a smoother customer experience and more efficient internal workflows.  
+
 **Modeling Approach**  
 1. Baseline Neural Network  
 Flatten → Dense(128, ReLU) → Dense(10, Softmax)  
@@ -28,6 +31,3 @@ Baseline CNN	~91%
 Optimised CNN (Final Model)	~94%  
 
 The optimised CNN showed strong generalisation and effectively extracted spatial features from the images, outperforming dense-only models by a large margin.
-
-**Business Use Case:**  
-This CNN model can support real-world retail and e-commerce operations by automating the classification of clothing images, reducing the time and effort spent on manual product tagging. With strong generalisation and high accuracy, it can help maintain consistent product categorisation across large inventories, improve search and filtering, and strengthen recommendation systems by linking visually similar items, all of which lead to a smoother customer experience and more efficient internal workflows.
