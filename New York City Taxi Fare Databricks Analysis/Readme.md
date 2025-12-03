@@ -3,7 +3,7 @@ This study’s goal is based on the New York City Taxi & Limousine Commission’
 Databricks will be used to analyse the dataset. The dataset is a very large file containing more than eighty million rows. To work around this, I will be using an API to import a dataset with seven hundred thousand rows instead. I used Python with the following code:  
 <img width="511" height="464" alt="image" src="https://github.com/user-attachments/assets/bd9f1589-e686-4902-95e1-ae1ea2b79472" />  
 
-_Pricing Inequities:_
+_Pricing Inequities:_  
 <img width="453" height="280" alt="image" src="https://github.com/user-attachments/assets/ac536253-0eec-49f8-a296-551b2437eaac" />  
 
 _Top 10 cheapest average fare miles:_  
@@ -19,11 +19,11 @@ The overall average of the off-peak and peak hour rides is roughly the same, bei
 
 **Morning and Evening Peak Comparison**
 
-_Top 10 Dropoff_
+_Top 10 Dropoff_  
 <img width="600" height="256" alt="image" src="https://github.com/user-attachments/assets/b404e8c0-5cf8-4056-82b3-4abd230777eb" />  
 <img width="437" height="282" alt="image" src="https://github.com/user-attachments/assets/b6f85b52-0471-4bea-98cb-957ce850c152" />  
 
-_Top 10 Pickup_
+_Top 10 Pickup_  
 <img width="601" height="251" alt="image" src="https://github.com/user-attachments/assets/1728cba8-e253-4de5-bb21-74ab2e2ea00c" />  
 <img width="423" height="279" alt="image" src="https://github.com/user-attachments/assets/cf91e359-0ed1-4a71-9556-711c3b0b7f31" />  
 
