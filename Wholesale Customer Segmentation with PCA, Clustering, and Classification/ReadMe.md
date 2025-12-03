@@ -73,9 +73,11 @@ Applying SMOTE addresses the class imbalance, improving the performance of recal
 • Recall: Baseline SVM (0.3822)  
 
 **Business Recommendation**  
+
 *Customer Segment 1*:  
 Customer segment 1 (HC_0 & KM_0) are customers with lower annual spending compared to segment 2. These customers have a smaller market basket, which indicate that they are more price sensitive. A great strategy would be to offer low cost, but higher volume household items, especially for fresh produce bundles, or combining their highest spending categories into cross-selling bundles like fresh produce and milk. Placing these two items next to each would increase their sales, since these customers are more likely to buy both. Or laundry items can be placed in between these two categories so customers have a chance to buy other items while they are on the way to get item 2 from item 1’s area.  
 Another recommendation for increasing price per volume is to encourage the use of loyalty credits or bonuses that reward customers for buying consistently with big discounts at the end of the month. For example, purchasing a combined 100 AUD worth of fresh produce and milk in 3 months would grant the customer a 30% discount at the end of the 3rd month. These customers buying household items have a higher tendency to buy items for the long term, so promoting bundles as “buy more to save more” promotions would increase their spending.  
+
 *Customer segment 2*:  
 Customer segment 2 (HC_1 & KM_1) spend more annually compared to segment 1, especially for milk, fresh produce, and grocery items. As mentioned before, these segments are most likely large retailers, hotels, or food and beverage establishments. These customer types would benefit the most from bulk orders and reliability in meeting consistent demand.  
 Retention and loyalty programs would ensure long term partnerships with these customers, especially with long term contracts that provide bulk discounts. These customers would less likely switch to a different provider.  
