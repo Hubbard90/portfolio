@@ -29,9 +29,5 @@ Optimised CNN (Final Model)	~94%
 
 The optimised CNN showed strong generalisation and effectively extracted spatial features from the images, outperforming dense-only models by a large margin.
 
-**What I Learned**  
-How CNN layers detect edges, textures, and shapes in image data  
-How regularisation (dropout, augmentation) improves generalisation  
-How optimisers and learning-rate schedules impact model stability  
-How to evaluate deep learning models using accuracy/loss curves  
-How to structure machine-learning projects for clarity and reproducibility  
+**Business Use Case:**  
+This CNN model can support real-world retail and e-commerce operations by automating the classification of clothing images, reducing the time and effort spent on manual product tagging. With strong generalisation and high accuracy, it can help maintain consistent product categorisation across large inventories, improve search and filtering, and strengthen recommendation systems by linking visually similar items, all of which lead to a smoother customer experience and more efficient internal workflows.
