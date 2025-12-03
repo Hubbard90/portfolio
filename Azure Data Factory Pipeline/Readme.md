@@ -27,7 +27,7 @@ _Linked Services_
 _API Pagination Setup_  
 The Melbourne API only returns 1,000 records per call, so pagination ensured each 15-min refresh captured the next batch rather than repeatedly ingesting the same records.  
 
-**What transformations occurred in the Data Flow?  **
+**What transformations occurred in the Data Flow?**
 <img width="604" height="254" alt="image" src="https://github.com/user-attachments/assets/f359ff15-3630-48f4-8999-897c1c20fe06" />  
 ✔ Select — remove unnecessary fields & rename columns  
 ✔ Join — merge raw pedestrian data with sensor metadata  
@@ -48,7 +48,7 @@ Every 15 minutes:
 <img width="272" height="281" alt="image" src="https://github.com/user-attachments/assets/9d3cb050-4e33-43a2-934c-290590a4c5f1" />  
 I chose “DirectQuery” under the Data Connectivity Mode to ensure the data stays updated in real time every time Azure Data Factory uploads new data into the database. With this choice, the dataset in PowerBI can simply be refreshed instead of having to import new data.  
 
-***Pedestrian Data Analysis**
+***Pedestrian Data Analysis**  
 <img width="620" height="349" alt="image" src="https://github.com/user-attachments/assets/8ee6442b-102e-4a37-9d20-bc9354350874" />  
 
 The graph above is an overall summary of the pedestrian data in 2024:  
