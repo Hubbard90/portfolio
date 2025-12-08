@@ -40,12 +40,11 @@ Classes 2 and 3 significantly overlap in feature space, causing low classificati
 To validate whether the model really did learn, we can map the SHAP feature patterns directly to the real mechanical fault types:  
 
 -Fault 1 = Rich Mixture  
-<img width="778" height="956" alt="image" src="https://github.com/user-attachments/assets/baa83f28-a047-4fc6-953e-91cbadbf1034" />  
+<img width="766" height="556" alt="image" src="https://github.com/user-attachments/assets/de20aa2d-b7e5-4382-989d-252efd331b51" />  
 
 -Fault 2 = Lean Mixture  
-<img width="778" height="956" alt="image" src="https://github.com/user-attachments/assets/3d86c524-bc77-4aca-9196-aa0383798f41" />  
+<img width="773" height="556" alt="image" src="https://github.com/user-attachments/assets/a4e4ae55-41f2-4a5e-ab17-6567547e5719" />  
 
 -Fault 3 = Low Voltage (Ignition-related)  
-<img width="778" height="956" alt="image" src="https://github.com/user-attachments/assets/27ce46d1-ed8f-41e0-962a-4cdf51043441" />  
-
+<img width="773" height="556" alt="image" src="https://github.com/user-attachments/assets/52ca98a2-b842-458f-a0cf-69fa466c2228" />  
 
