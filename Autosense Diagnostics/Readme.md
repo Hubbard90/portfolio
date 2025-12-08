@@ -37,7 +37,7 @@ This dataset was tested on KNN, Neural Network, Random Forest, and XGBoost model
 Classes 2 and 3 significantly overlap in feature space, causing low classification scores for both. This means that the model has trouble distinguishing between the two classes due to how similar their features are. To address this, additional data should be collected around borderline lambda 1 and AFR 14.5 to get better separability in feature space.  
 
 **SHAP Explainability**  
-To validate whether the model really did learn, we can map the SHAP feature patterns directly to the real mechanical fault types:  
+To validate whether the model really did learn, we can map the SHAP feature patterns directly to the real mechanical fault types and show the top 10 contributors for each fault type:  
 
 -Fault 1 = Rich Mixture  
 <img width="766" height="556" alt="image" src="https://github.com/user-attachments/assets/de20aa2d-b7e5-4382-989d-252efd331b51" />  
@@ -48,3 +48,4 @@ To validate whether the model really did learn, we can map the SHAP feature patt
 -Fault 3 = Low Voltage (Ignition-related)  
 <img width="773" height="556" alt="image" src="https://github.com/user-attachments/assets/52ca98a2-b842-458f-a0cf-69fa466c2228" />  
 
+Across all three fault types, the SHAP validation shows that the model is behaving in a way that actually makes sense for real engines. For Rich Mixture (Class 1), it picks up the expected signals-higher CO/CO₂, lower O₂, and increased fuel use,typical of over fuelling. For Lean Mixture (Class 2), the model responds to excess oxygen and lower combustion efficiency, which aligns with under-fuelled conditions. And for Low Voltage/Ignition faults (Class 3), it reacts strongly to high O₂ and HC with unstable patterns under load, which is exactly what happens during misfires. Overall, the model isn’t guessing; it’s differentiating faults based on patterns that match real combustion behaviour.
