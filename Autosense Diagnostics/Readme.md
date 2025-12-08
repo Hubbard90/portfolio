@@ -34,3 +34,18 @@ This dataset was tested on KNN, Neural Network, Random Forest, and XGBoost model
 
 <img width="426" height="195" alt="image" src="https://github.com/user-attachments/assets/6f84e1a2-1902-42dc-abc5-71509336ea93" />  
 
+Classes 2 and 3 significantly overlap in feature space, causing low classification scores for both. This means that the model has trouble distinguishing between the two classes due to how similar their features are. To address this, additional data should be collected around borderline lambda 1 and AFR 14.5 to get better separability in feature space.  
+
+**SHAP Explainability**  
+To validate whether the model really did learn, we can map the SHAP feature patterns directly to the real mechanical fault types:  
+
+-Fault 1 = Rich Mixture  
+<img width="778" height="956" alt="image" src="https://github.com/user-attachments/assets/baa83f28-a047-4fc6-953e-91cbadbf1034" />  
+
+-Fault 2 = Lean Mixture  
+<img width="778" height="956" alt="image" src="https://github.com/user-attachments/assets/3d86c524-bc77-4aca-9196-aa0383798f41" />  
+
+-Fault 3 = Low Voltage (Ignition-related)  
+<img width="778" height="956" alt="image" src="https://github.com/user-attachments/assets/27ce46d1-ed8f-41e0-962a-4cdf51043441" />  
+
+
