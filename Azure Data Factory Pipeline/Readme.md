@@ -36,8 +36,8 @@ Aggregate — sum pedestrian counts by hour & direction
 Windowing — rank locations by pedestrian count  
 Sink — write cleaned tables into Azure SQL  
 
-**Trigger Intervals**
-A 15-minute interval trigger was configured in ADF.
+**Trigger Intervals**  
+A 15-minute interval trigger was configured in ADF.  
 Every 15 minutes:  
 <img width="374" height="353" alt="image" src="https://github.com/user-attachments/assets/47d13524-a8ac-4ff7-a31a-f300919a3358" />  
 
