@@ -29,12 +29,12 @@ The Melbourne API only returns 1,000 records per call, so pagination ensured eac
 
 **What transformations occurred in the Data Flow?**
 <img width="604" height="254" alt="image" src="https://github.com/user-attachments/assets/f359ff15-3630-48f4-8999-897c1c20fe06" />  
-✔ Select — remove unnecessary fields & rename columns  
-✔ Join — merge raw pedestrian data with sensor metadata  
-✔ Filter — remove empty values & inconsistent records  
-✔ Aggregate — sum pedestrian counts by hour & direction  
-✔ Windowing — rank locations by pedestrian count  
-✔ Sink — write cleaned tables into Azure SQL  
+Select — remove unnecessary fields & rename columns  
+Join — merge raw pedestrian data with sensor metadata  
+Filter — remove empty values & inconsistent records  
+Aggregate — sum pedestrian counts by hour & direction  
+Windowing — rank locations by pedestrian count  
+Sink — write cleaned tables into Azure SQL  
 
 **Trigger Intervals**
 A 15-minute interval trigger was configured in ADF.
