@@ -45,10 +45,10 @@ The cluster analysis and market basket analysis generated actionable strategies 
 -Cross-sell with complementary sports items  
 -Position store messaging around performance  
 
-Segment 2 – Low Denim Engagement  
--Improve denim visibility in high-traffic areas  
--Test targeted promotions  
--Optimise inventory levels  
+		Segment 2 – Low Denim Engagement  
+		-Improve denim visibility in high-traffic areas  
+		-Test targeted promotions  
+		-Optimise inventory levels  
 
 Segment 3 – Fashion-Oriented  
 -Increase fashion inventory turnover  
