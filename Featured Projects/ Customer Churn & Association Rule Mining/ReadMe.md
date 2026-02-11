@@ -77,6 +77,6 @@ Action:
 -Place high-affinity items near each other to increase impulse purchases  
 -Alternatively, separate them strategically to increase cross-aisle traffic  
 -Pilot test layout adjustments and measure:  
-  >Basket size  
-  >Cross-category penetration  
-  >Incremental sales lift  
+  -Basket size  
+  -Cross-category penetration  
+  -Incremental sales lift  
