@@ -45,20 +45,20 @@ The cluster analysis and market basket analysis generated actionable strategies 
 -Cross-sell with complementary sports items  
 -Position store messaging around performance  
 
-		Segment 2 – Low Denim Engagement  
-		-Improve denim visibility in high-traffic areas  
-		-Test targeted promotions  
-		-Optimise inventory levels  
+	Segment 2 – Low Denim Engagement  
+	-Improve denim visibility in high-traffic areas  
+	-Test targeted promotions  
+	-Optimise inventory levels  
 
-Segment 3 – Fashion-Oriented  
--Increase fashion inventory turnover  
--Refresh visual displays frequently  
--Prioritise new-arrival marketing  
+	Segment 3 – Fashion-Oriented  
+	-Increase fashion inventory turnover  
+	-Refresh visual displays frequently  
+	-Prioritise new-arrival marketing  
 
-Segment 4 – Leisure-Focused  
--Emphasise comfort positioning  
--Bundle leisure items  
--Maintain competitive pricing  
+	Segment 4 – Leisure-Focused  
+	-Emphasise comfort positioning  
+	-Bundle leisure items  
+	-Maintain competitive pricing  
 
 2. Product Bundling Strategy  
 High-lift association rules identified strong cross-selling opportunities:  
@@ -66,17 +66,17 @@ High-lift association rules identified strong cross-selling opportunities:
 -Magazines + Candy + Greeting Cards (Lift: 2.8)  
 -Toothpaste + Candy + Magazines (Lift: 2.53)  
 
-Action:  
--Introduce themed bundles with modest 5–10% discounts  
--Align bundles with seasonal campaigns  
--Promote as impulse or convenience packs  
--Because affinity is already strong, heavy discounting is unnecessary.  
+	Action:  
+	-Introduce themed bundles with modest 5–10% discounts  
+	-Align bundles with seasonal campaigns  
+	-Promote as impulse or convenience packs  
+	-Because affinity is already strong, heavy discounting is unnecessary.  
 
 3. Store Layout Optimisation  
--Use association insights to redesign shelf placement:  
+Use association insights to redesign shelf placement:  
 -Place high-affinity items near each other to increase impulse purchases  
 -Alternatively, separate them strategically to increase cross-aisle traffic  
--Pilot test layout adjustments and measure:  
-  -Basket size  
-  -Cross-category penetration  
-  -Incremental sales lift  
+Pilot test layout adjustments and measure:  
+-Basket size  
+-Cross-category penetration  
+-Incremental sales lift  
