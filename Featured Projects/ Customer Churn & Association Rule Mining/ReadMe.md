@@ -21,7 +21,7 @@ These profiles guide inventory planning, product placement, and targeted promoti
 
 **Market Basket Analysis**  
 High-lift association rules revealed strong product affinities, such as:  
-Perfume ↔ Toothpaste (Lift 3.60)  
+Perfume & Toothpaste (Lift 3.60): Customers who buy perfume are 3.6 times more likely to buy toothpast  
 <img width="371" height="80" alt="image" src="https://github.com/user-attachments/assets/9c6d477b-7ab6-40a2-90f0-857e2e1bffc5" />
 
 **Product Bundles:**  
@@ -35,8 +35,48 @@ Toothpaste + Candy + Magazines (Lift: 2.53, Confidence: 45.86%, Expected Confide
   
 These insights were used to design product bundles and optimise store layout for cross-selling.  
 
-**Business Impact**  
-More accurate customer targeting through well-defined behavioural segments  
-Improved marketing strategy using high-value product bundles  
-Practical recommendations for store layout, in-aisle promotions, and seasonal campaigns  
-Foundation for churn prediction using supervised models (Decision Tree, Logistic Regression, NN)  
+*Business Recommendations*  
+The cluster analysis and market basket analysis generated actionable strategies across merchandising, store layout, and promotional planning. The recommendations below translate analytical findings into measurable retail decisions.  
+
+1. Segment-Based Store Strategy  
+-Customer preferences vary significantly across store clusters. A uniform merchandising strategy would reduce effectiveness.  
+-Segment 1 – Active/Stretch Focus  
+-Increase activewear allocation  
+-Cross-sell with complementary sports items  
+-Position store messaging around performance  
+
+Segment 2 – Low Denim Engagement  
+-Improve denim visibility in high-traffic areas  
+-Test targeted promotions  
+-Optimise inventory levels  
+
+Segment 3 – Fashion-Oriented  
+-Increase fashion inventory turnover  
+-Refresh visual displays frequently  
+-Prioritise new-arrival marketing  
+
+Segment 4 – Leisure-Focused  
+-Emphasise comfort positioning  
+-Bundle leisure items  
+-Maintain competitive pricing  
+
+2. Product Bundling Strategy  
+High-lift association rules identified strong cross-selling opportunities:  
+-Toothpaste + Perfume (Lift: 3.60)  
+-Magazines + Candy + Greeting Cards (Lift: 2.8)  
+-Toothpaste + Candy + Magazines (Lift: 2.53)  
+
+Action:  
+-Introduce themed bundles with modest 5–10% discounts  
+-Align bundles with seasonal campaigns  
+-Promote as impulse or convenience packs  
+-Because affinity is already strong, heavy discounting is unnecessary.  
+
+3. Store Layout Optimisation  
+-Use association insights to redesign shelf placement:  
+-Place high-affinity items near each other to increase impulse purchases  
+-Alternatively, separate them strategically to increase cross-aisle traffic  
+-Pilot test layout adjustments and measure:  
+  >Basket size  
+  >Cross-category penetration  
+  >Incremental sales lift  
