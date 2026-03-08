@@ -28,7 +28,7 @@ Perfume & Toothpaste (Lift 3.60): Customers who buy perfume are 3.6 times more l
 I used this matrix plot to reveal the best cross-selling opportunities between high-volume items: 
 <img width="915.6" height="459.2" alt="image" src="https://github.com/user-attachments/assets/821b2d08-d413-46a2-90c8-9463ebe95b8b" />
 
-The three product bundles I recommend:
+The three product bundles I recommend:  
 Toothpaste + Perfume (Lift: 3.60, Confidence: 32.40%, Support: 2.18%)
 Magazines + Candy Bars + Greeting Cards (Lift 2.8, Confidence: 41.11%, Support: 1.67%)  
 Toothpaste + Candy + Magazines (Lift: 2.53, Confidence: 45.86%, Expected Confidence: 17.10%, Support: 1.67%)
