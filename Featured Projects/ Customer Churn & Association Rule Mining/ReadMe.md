@@ -25,7 +25,7 @@ Perfume & Toothpaste (Lift 3.60): Customers who buy perfume are 3.6 times more l
 <img width="371" height="80" alt="image" src="https://github.com/user-attachments/assets/9c6d477b-7ab6-40a2-90f0-857e2e1bffc5" />
 
 **Product Bundles:**  
-I used this matric plot to reveal the best cross-selling opportunities between high-volume items: 
+I used this matrix plot to reveal the best cross-selling opportunities between high-volume items: 
 <img width="915.6" height="459.2" alt="image" src="https://github.com/user-attachments/assets/821b2d08-d413-46a2-90c8-9463ebe95b8b" />
 
 The three product bundles I recommend:
