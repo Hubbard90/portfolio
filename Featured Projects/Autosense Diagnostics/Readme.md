@@ -1,51 +1,194 @@
-**Project Overview**  
-As of today, reactive maintenance still dominates vehicle servicing. The problem with this is that it leads to avoidable downtime, higher repair costs, and higher emissions. Using AI and analytics, we propose transitioning towards a more proactive way of dealing with car faults by continuously monitoring insights from IoT sensors. The AI will then predict faults based on the readings and design maintenance schedules, repair suggestions, and preventative measures. 
+# Engine Fault Classification for Predictive Maintenance  
+## Translating Machine Learning into Business Impact
 
-The model aims to classify engine faults from sensor data to recommend maintenance action. It makes use of multiple analytics features, from fault detection, scheduling, cost prediction, and insight delivery, to create value for drivers, fleet managers, and manufacturers. This approach extends the existing EngineFaultDB methodology (Vergara et al., 2023) by developing a new machine learning pipeline that makes use of real-world data. 
+## Overview
+This project develops a machine learning model to classify engine fault conditions using sensor data. The broader objective is to support a shift from reactive maintenance to **predictive, data-driven decision-making** in the automotive industry.
 
-The business problem was formulated using a multi-class classification model. The model predicts four classes of engine condition based on continuous readings of manifold pressure, throttle position, RPM, emissions, and fuel consumption. The model’s output will then be fed into a pipeline that involves a series of tasks that support the AI’s initiative of creating maintenance schedules and repair decision-making. For this prototype, class 0 refers to a healthy engine, while the rest refer to the following engine issues:  
+The work builds on the Auto-sense Diagnostics (ASD) concept, an edge-to-cloud predictive maintenance system designed to monitor vehicle health using IoT sensor data and machine learning models :contentReference[oaicite:0]{index=0}.
 
-<img width="498" height="359" alt="image" src="https://github.com/user-attachments/assets/9893048e-0e98-4f4e-83a6-c4c2ac3e190f" />  
+The final model achieved:
 
+- Mean Cross-Validation Macro-F1: **0.855 ± 0.041**
+- <img width="508" height="445" alt="image" src="https://github.com/user-attachments/assets/857a2a25-c8f4-4d69-8469-6d201b5d526d" />
+- Strong generalisation across engine condition groups
+- Reliable detection of dominant fault patterns
 
-**Dataset**  
-The study uses the EngineFaultDB dataset that has 55,999 records and 14 continuous predictors that represent the performance of a C14NE engine. This sensor data was collected under normal conditions and fault-induced conditions in order to include engines with actual faults in their dataset.  
+---
 
-**Preprocessing**  
-Missing and duplicate values were first checked, with only duplicate values being present. Physically impossible readings were also removed; these data points were implied to be data entry errors. Features were then scaled using the MinMax method so that all the values of the predictors are in the same range.  
+## Business Problem Context
+Reactive vehicle maintenance remains the dominant approach in the industry, leading to:
 
-The following features were then engineered for better class separability: 
+- Unplanned downtime  
+- Higher repair costs  
+- Increased emissions  
 
-<img width="599" height="207" alt="image" src="https://github.com/user-attachments/assets/0a3ece63-c4e2-4574-bf22-2d593b2bc7dc" />  
+According to the project report, unplanned vehicle downtime results in significant economic loss and inefficiencies, highlighting the need for proactive solutions :contentReference[oaicite:1]{index=1}.
 
-The goal of the study is to find a model that accurately detects engine faults for safety and long-term cost savings. Because it will be dangerous, for both people and the car itself, to drive with faulty car parts, we should avoid false negatives.  
+This project reframes the problem as:
 
-Having a low recall score, which measures true positives relative to the number of false negatives there are, would cause drivers to think that the car is safe enough to use even when there are faults. Not only would this lead to dangerous accidents, but this would also cause more damage to the car, increasing the cost of maintenance in the long run.  
+> How can engine faults be detected early using sensor data to reduce downtime, optimise maintenance, and improve operational efficiency?
 
-Having a low precision score is the opposite; it measures true positives relative to false positives. Having a low precision score will cause the AI to detect engine faults even when there are none. While this may not seem like a worse outcome compared to a low recall score, this would cause the users to lose trust in the AI. They would then ignore detection and end up turning it off because of how often the AI will incur false positive detections.  
+---
 
-The best metric for this is F1, which provides a balance between the two. The AI needs to
-prevent false positives and false negatives equally. 
+## Data and Model Approach
 
-**Model Selection**  
-This dataset was tested on KNN, Neural Network, Random Forest, and XGBoost models, with XGBoost having the best results. See below for the optimal hyperparameters and the evaluation:
+The model uses the EngineFaultDB dataset, consisting of:
 
-<img width="339" height="219" alt="image" src="https://github.com/user-attachments/assets/6ecb722c-69b7-46d2-9375-a18775d8883c" />  
+- ~56,000 observations  
+- 14 continuous engine sensor variables  
+- Measurements including RPM, throttle position, emissions, fuel consumption, and air-fuel ratios 
 
-<img width="426" height="195" alt="image" src="https://github.com/user-attachments/assets/6f84e1a2-1902-42dc-abc5-71509336ea93" />  
+A multi-class classification approach was used to predict engine health states.
 
-Classes 2 and 3 significantly overlap in feature space, causing low classification scores for both. This means that the model has trouble distinguishing between the two classes due to how similar their features are. To address this, additional data should be collected around borderline lambda 1 and AFR 14.5 to get better separability in feature space.  
+Key modelling steps:
+- Data preprocessing and scaling
+- Feature engineering and transformation
+- KMeans-based grouping to handle structured similarity
+- GroupKFold cross-validation for robust evaluation
+- XGBoost selected as the final model due to strong performance on non-linear data
 
-**SHAP Explainability**  
-To validate whether the model really did learn, we can map the SHAP feature patterns directly to the real mechanical fault types and show the top 10 contributors for each fault type:  
+---
 
--Fault 1 = Rich Mixture  
-<img width="766" height="556" alt="image" src="https://github.com/user-attachments/assets/de20aa2d-b7e5-4382-989d-252efd331b51" />  
+## Key Analytical Insights
 
--Fault 2 = Lean Mixture  
-<img width="773" height="556" alt="image" src="https://github.com/user-attachments/assets/a4e4ae55-41f2-4a5e-ab17-6567547e5719" />  
+### 1. Engine faults are driven by consistent system behaviour
+The model performs consistently across cross-validation folds, indicating that:
 
--Fault 3 = Low Voltage (Ignition-related)  
-<img width="773" height="556" alt="image" src="https://github.com/user-attachments/assets/52ca98a2-b842-458f-a0cf-69fa466c2228" />  
+- Faults are not random  
+- They are driven by repeatable relationships between engine variables  
 
-Across all three fault types, the SHAP validation shows that the model is behaving in a way that actually makes sense for real engines. For Rich Mixture (Class 1), it picks up the expected signals-higher CO/CO₂, lower O₂, and increased fuel use,typical of over fuelling. For Lean Mixture (Class 2), the model responds to excess oxygen and lower combustion efficiency, which aligns with under-fuelled conditions. And for Low Voltage/Ignition faults (Class 3), it reacts strongly to high O₂ and HC with unstable patterns under load, which is exactly what happens during misfires. Overall, the model isn’t guessing; it’s differentiating faults based on patterns that match real combustion behaviour.
+Business implication:
+- Engine monitoring can be standardised across vehicles
+- Enables scalable predictive maintenance systems
+
+---
+
+### 2. Fault detection difficulty varies across conditions
+The original study showed that some fault classes are significantly harder to distinguish due to overlapping feature space.
+
+This is also reflected in model variability across folds.
+
+Business implication:
+- Diagnostic systems should prioritise ambiguous or borderline fault conditions
+- Resource allocation (inspection, servicing) can be optimised
+
+---
+
+### 3. Model performance depends on operating conditions
+Cross-validation results varied:
+
+- Macro-F1 range: ~0.82 to ~0.93
+-   <img width="292" height="130" alt="image" src="https://github.com/user-attachments/assets/ed0d2acd-afb8-4373-ab54-de20d7f7e1aa" />
+
+This indicates that model performance changes depending on which engine conditions are encountered.
+
+Business implication:
+- Models must be validated across diverse operating environments
+- Deployment should include continuous monitoring and retraining
+
+---
+
+### 4. High model accuracy can be misleading without validation
+Initial experiments showed near-perfect performance (~0.99), but deeper validation revealed:
+
+- Dataset contains structured and predictable patterns  
+- Performance can be inflated without proper validation  
+
+Business implication:
+- High accuracy alone is not sufficient  
+- Robust validation (e.g. grouped cross-validation) is critical for real-world deployment
+
+---
+
+### 5. Feature engineering must balance performance and generalisability
+Some engineered features significantly improved performance but risked encoding fault logic directly.
+
+Business implication:
+- Over-engineered features can reduce model reliability in real-world scenarios  
+- Simpler, more generalisable features are often more robust
+
+---
+
+## Business Value
+
+### Predictive Maintenance
+- Early detection of faults before failure  
+- Reduced vehicle downtime  
+- Improved safety outcomes  
+
+---
+
+### Cost Optimisation
+- Prevent expensive repairs  
+- Reduce unnecessary servicing  
+- Enable cost forecasting through integrated analytics  
+
+---
+
+### Operational Efficiency
+- Real-time monitoring via IoT sensors  
+- Faster diagnosis compared to manual inspection  
+- Scalable deployment across fleets  
+
+---
+
+### Strategic Insights
+- Identify recurring fault patterns  
+- Support product design improvements  
+- Enable data-driven decision-making for fleet managers and manufacturers  
+
+---
+
+## Deployment Context
+
+The model is designed as part of the Auto-sense Diagnostics system:
+
+- IoT sensors collect real-time engine data  
+- Data is processed through an edge-to-cloud architecture  
+- Model outputs include:
+  - fault classification  
+  - maintenance recommendations  
+  - cost predictions  
+  - analytics dashboards  
+
+This transforms the model from a standalone classifier into a **decision-support system** :contentReference[oaicite:4]{index=4}.
+
+---
+
+## Limitations
+
+- Dataset is collected under controlled conditions  
+- Real-world data will include:
+  - noise  
+  - missing values  
+  - unpredictable behaviour  
+
+- Some fault classes remain difficult to separate due to overlapping features  
+
+This suggests that real-world performance may be lower than observed results.
+
+---
+
+## Future Improvements
+
+- Incorporate real-world sensor data  
+- Extend model to time-series predictions  
+- Improve class separation using additional data  
+- Expand to multi-system diagnostics (e.g. transmission, fuel system)  
+- Implement continuous learning via MLOps pipeline  
+
+---
+
+## Key Takeaway
+
+This project demonstrates that:
+
+- Strong predictive performance must be supported by robust validation  
+- Machine learning models create the most value when integrated into business workflows  
+- Predictive maintenance systems can significantly improve operational efficiency, reduce costs, and enhance decision-making  
+
+---
+
+## About
+
+This project focuses on bridging technical modelling with business value, demonstrating how machine learning can be applied to real-world operational problems in a practical and scalable way.
