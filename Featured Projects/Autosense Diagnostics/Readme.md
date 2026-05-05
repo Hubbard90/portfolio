@@ -1,194 +1,129 @@
-# Engine Fault Classification for Predictive Maintenance  
-## Translating Machine Learning into Business Impact
+## AutoSense Diagnostics: Predictive Maintenance System  
 
-## Overview
-This project develops a machine learning model to classify engine fault conditions using sensor data. The broader objective is to support a shift from reactive maintenance to **predictive, data-driven decision-making** in the automotive industry.
+AutoSense Diagnostics is a conceptual edge-to-cloud AI system designed to detect and classify engine faults using real-time sensor data.  
 
-The work builds on the Auto-sense Diagnostics (ASD) concept, an edge-to-cloud predictive maintenance system designed to monitor vehicle health using IoT sensor data and machine learning models :contentReference[oaicite:0]{index=0}.
+The objective of this project is to transition vehicle servicing from reactive maintenance, where faults are addressed after failure, to a predictive maintenance approach that identifies issues early, reduces downtime, and lowers long-term costs.  
 
-The final model achieved:
+Using sensor inputs such as engine pressure, fuel consumption, emissions, and RPM, the system classifies engine health into multiple fault categories and supports downstream decisions such as maintenance scheduling, cost prediction, and real-time diagnostics.  
 
-- Mean Cross-Validation Macro-F1: **0.855 ± 0.041**
-- <img width="508" height="445" alt="image" src="https://github.com/user-attachments/assets/857a2a25-c8f4-4d69-8469-6d201b5d526d" />
-- Strong generalisation across engine condition groups
-- Reliable detection of dominant fault patterns
+This directly addresses the problem of unplanned downtime and inefficient maintenance cycles, which lead to significant operational and financial losses.
 
 ---
 
-## Business Problem Context
-Reactive vehicle maintenance remains the dominant approach in the industry, leading to:
+## Dataset  
 
-- Unplanned downtime  
-- Higher repair costs  
-- Increased emissions  
+The model is built using the **[EngineFaultDB dataset]([url](https://www.kaggle.com/datasets/ziya07/engine-fault-detection-data))**, which contains 55,999 records of engine sensor readings collected under both normal and fault-induced conditions.  
 
-According to the project report, unplanned vehicle downtime results in significant economic loss and inefficiencies, highlighting the need for proactive solutions :contentReference[oaicite:1]{index=1}.
+The dataset includes key variables such as:
+- Manifold Absolute Pressure (MAP)  
+- Throttle Position (TPS)  
+- RPM  
+- Fuel consumption  
+- Emissions (CO, CO₂, HC, O₂)  
+- Air-Fuel Ratio (AFR)  
 
-This project reframes the problem as:
+These variables simulate real-world engine behaviour and allow the model to learn patterns associated with different fault conditions.  
 
-> How can engine faults be detected early using sensor data to reduce downtime, optimise maintenance, and improve operational efficiency?
-
----
-
-## Data and Model Approach
-
-The model uses the EngineFaultDB dataset, consisting of:
-
-- ~56,000 observations  
-- 14 continuous engine sensor variables  
-- Measurements including RPM, throttle position, emissions, fuel consumption, and air-fuel ratios 
-
-A multi-class classification approach was used to predict engine health states.
-
-Key modelling steps:
-- Data preprocessing and scaling
-- Feature engineering and transformation
-- KMeans-based grouping to handle structured similarity
-- GroupKFold cross-validation for robust evaluation
-- XGBoost selected as the final model due to strong performance on non-linear data
+**Source:**  
+Vergara et al. (2023), EngineFaultDB dataset (open-source engine fault simulation dataset)
 
 ---
 
-## Key Analytical Insights
+## Model Validation and Refinement  
 
-### 1. Engine faults are driven by consistent system behaviour
-The model performs consistently across cross-validation folds, indicating that:
+During model development, one key issue emerged.  
+Class 2 and Class 3 faults were not easily separable due to overlapping feature patterns.
 
-- Faults are not random  
-- They are driven by repeatable relationships between engine variables  
+To test a potential improvement, I merged both classes into a single “Fault 2” category.  
+This resulted in an almost perfect model score.
 
-Business implication:
-- Engine monitoring can be standardised across vehicles
-- Enables scalable predictive maintenance systems
+<img width="515" height="455" alt="image" src="https://github.com/user-attachments/assets/5681ad58-eff8-43a7-8123-72f0d9d73f0e" />
 
----
 
-### 2. Fault detection difficulty varies across conditions
-The original study showed that some fault classes are significantly harder to distinguish due to overlapping feature space.
-
-This is also reflected in model variability across folds.
-
-Business implication:
-- Diagnostic systems should prioritise ambiguous or borderline fault conditions
-- Resource allocation (inspection, servicing) can be optimised
+While this appeared to be an improvement, it raised concerns about whether the model was genuinely learning meaningful patterns.
 
 ---
 
-### 3. Model performance depends on operating conditions
-Cross-validation results varied:
+## Validation Approach  
 
-- Macro-F1 range: ~0.82 to ~0.93
--   <img width="292" height="130" alt="image" src="https://github.com/user-attachments/assets/ed0d2acd-afb8-4373-ab54-de20d7f7e1aa" />
+To verify the reliability of the model, I conducted additional validation:
 
-This indicates that model performance changes depending on which engine conditions are encountered.
+- Shuffle testing  
+- Data leakage checks  
+- Dependency analysis  
+- Overfitting checks  
 
-Business implication:
-- Models must be validated across diverse operating environments
-- Deployment should include continuous monitoring and retraining
+The results showed no clear leakage or overfitting. However, the model exhibited strong data dependency.
 
----
+<img width="555" height="273" alt="image" src="https://github.com/user-attachments/assets/c8da1246-d20a-46e1-b0eb-6aebc3bc7ccc" />
 
-### 4. High model accuracy can be misleading without validation
-Initial experiments showed near-perfect performance (~0.99), but deeper validation revealed:
 
-- Dataset contains structured and predictable patterns  
-- Performance can be inflated without proper validation  
-
-Business implication:
-- High accuracy alone is not sufficient  
-- Robust validation (e.g. grouped cross-validation) is critical for real-world deployment
+This meant the model was learning patterns specific to the dataset rather than generalisable relationships.  
+As a result, the near-perfect score would likely fail in real-world deployment.
 
 ---
 
-### 5. Feature engineering must balance performance and generalisability
-Some engineered features significantly improved performance but risked encoding fault logic directly.
+## Pipeline Redesign  
 
-Business implication:
-- Over-engineered features can reduce model reliability in real-world scenarios  
-- Simpler, more generalisable features are often more robust
+To address this, I redesigned the modelling pipeline:
 
----
+- Removed feature engineering to reduce artificial signal inflation  
+- Applied Principal Component Analysis (PCA) to reduce dimensionality and multicollinearity:  
+<img width="846" height="547" alt="image" src="https://github.com/user-attachments/assets/7343bb05-ea30-4cf7-99e3-6b4278c8f70b" />
 
-## Business Value
+- Introduced K-Means clustering to group similar observations:  
+<img width="584" height="97" alt="image" src="https://github.com/user-attachments/assets/06da1f26-8407-42a0-ba09-4b24f744429d" />
 
-### Predictive Maintenance
-- Early detection of faults before failure  
-- Reduced vehicle downtime  
-- Improved safety outcomes  
+
+This approach prioritised generalisation and robustness over raw accuracy.
 
 ---
 
-### Cost Optimisation
-- Prevent expensive repairs  
-- Reduce unnecessary servicing  
-- Enable cost forecasting through integrated analytics  
+## Results  
+
+After implementing the redesigned pipeline:
+
+- Shuffle test score dropped to 0.27  
+- Model performance became more realistic  
+- Generalisation improved significantly  
+- Feature space became more interpretable  
+
+<img width="552" height="279" alt="image" src="https://github.com/user-attachments/assets/6e24573f-2af0-4ac1-91a1-341b2552abdb" />
+<img width="389" height="169" alt="image" src="https://github.com/user-attachments/assets/f48ca77b-5c5a-48e5-905d-77208574a1bb" />
+
+This reflects a deliberate trade-off from inflated accuracy to reliable real-world performance.
 
 ---
 
-### Operational Efficiency
-- Real-time monitoring via IoT sensors  
-- Faster diagnosis compared to manual inspection  
-- Scalable deployment across fleets  
+## Business Impact  
+
+A model with artificially high accuracy can create false confidence and lead to poor decisions.
+
+Potential risks of the initial model:
+- Missed faults leading to higher repair costs and safety risks  
+- False positives leading to unnecessary maintenance  
+- Reduced trust in the system  
+
+The improved model enables:
+- More reliable fault detection  
+- Proactive maintenance planning  
+- Reduced downtime and operational costs  
+- Better scalability to real-world environments  
+
+<img width="790" height="722" alt="image" src="https://github.com/user-attachments/assets/ca6ff792-e109-4cfc-9f34-d3748d7cf515" />
+
+
+This supports the transition from reactive to predictive maintenance.
 
 ---
 
-### Strategic Insights
-- Identify recurring fault patterns  
-- Support product design improvements  
-- Enable data-driven decision-making for fleet managers and manufacturers  
+## Key Takeaways  
 
----
+This project demonstrates a practical approach to building production-ready models:
 
-## Deployment Context
+- Validating results beyond accuracy  
+- Identifying and addressing data dependency  
+- Redesigning pipelines when necessary  
+- Connecting technical improvements to business outcomes  
 
-The model is designed as part of the Auto-sense Diagnostics system:
-
-- IoT sensors collect real-time engine data  
-- Data is processed through an edge-to-cloud architecture  
-- Model outputs include:
-  - fault classification  
-  - maintenance recommendations  
-  - cost predictions  
-  - analytics dashboards  
-
-This transforms the model from a standalone classifier into a **decision-support system** :contentReference[oaicite:4]{index=4}.
-
----
-
-## Limitations
-
-- Dataset is collected under controlled conditions  
-- Real-world data will include:
-  - noise  
-  - missing values  
-  - unpredictable behaviour  
-
-- Some fault classes remain difficult to separate due to overlapping features  
-
-This suggests that real-world performance may be lower than observed results.
-
----
-
-## Future Improvements
-
-- Incorporate real-world sensor data  
-- Extend model to time-series predictions  
-- Improve class separation using additional data  
-- Expand to multi-system diagnostics (e.g. transmission, fuel system)  
-- Implement continuous learning via MLOps pipeline  
-
----
-
-## Key Takeaway
-
-This project demonstrates that:
-
-- Strong predictive performance must be supported by robust validation  
-- Machine learning models create the most value when integrated into business workflows  
-- Predictive maintenance systems can significantly improve operational efficiency, reduce costs, and enhance decision-making  
-
----
-
-## About
-
-This project focuses on bridging technical modelling with business value, demonstrating how machine learning can be applied to real-world operational problems in a practical and scalable way.
+The focus is not just on building models, but ensuring they are robust, interpretable, and reliable in real-world applications.
