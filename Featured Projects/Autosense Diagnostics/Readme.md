@@ -88,7 +88,8 @@ After implementing the redesigned pipeline:
 - Generalisation improved significantly  
 - Feature space became more interpretable  
 
-<img width="552" height="279" alt="image" src="https://github.com/user-attachments/assets/6e24573f-2af0-4ac1-91a1-341b2552abdb" />
+<img width="552" height="279" alt="image" src="https://github.com/user-attachments/assets/6e24573f-2af0-4ac1-91a1-341b2552abdb" />  
+- Final:  
 <img width="389" height="169" alt="image" src="https://github.com/user-attachments/assets/f48ca77b-5c5a-48e5-905d-77208574a1bb" />
 
 This reflects a deliberate trade-off from inflated accuracy to reliable real-world performance.
