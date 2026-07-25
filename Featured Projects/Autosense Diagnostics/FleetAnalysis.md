@@ -34,16 +34,6 @@ AutoSense Diagnostics was designed as an edge-to-cloud predictive maintenance sy
 
 This fleet management project acts as the operational layer around that model.
 
-In simple terms:
-
-```text
-AutoSense Diagnostics
-Predicts potential engine fault from sensor data
-
-Fleet Maintenance Intelligence
-Uses work-order data to decide what fleet managers should do next
-```
-
 The machine learning model can detect potential issues, but fleet managers still need a practical system that turns those alerts into actions. This project supports that by identifying what kind of maintenance patterns, cost drivers, downtime patterns, and asset risks should be monitored in the dashboard.
 
 ---
@@ -58,30 +48,30 @@ Each row represents one work order.
 
 Important columns include:
 
-- `unique_work_order_no`
-- `job_type`
-- `eq_equip_no`
-- `work_order_status`
-- `datetime_open`
-- `datetime_first_labor`
-- `datetime_finished`
-- `datetime_closed`
-- `datetime_pm_sched`
-- `downtime_hrs_user`
-- `downtime_hrs_shop`
-- `labor_hours`
-- `labor_cost`
-- `parts_cost`
-- `comml_cost`
-- `total_cost`
-- `reas_for_repair_desc`
-- `dept_equip_dept_name`
-- `meter_1_life_total`
+- unique_work_order_no
+- job_type
+- eq_equip_no
+- work_order_status
+- datetime_open
+- datetime_first_labor
+- datetime_finished
+- datetime_closed
+- datetime_pm_sched
+- downtime_hrs_user
+- downtime_hrs_shop
+- labor_hours
+- labor_cost
+- parts_cost
+- comml_cost
+- total_cost
+- reas_for_repair_desc
+- dept_equip_dept_name
+- meter_1_life_total
 
 The two main job types are:
 
-- `PM`
-- `REPAIR`
+- PM
+- REPAIR
 
 PM appears to refer to preventive maintenance based on the dataset title, the scheduled PM field, and the way the records are structured.
 
@@ -153,9 +143,11 @@ The first comparison looked at average downtime by job type.
 
 PM jobs had lower average downtime than repair jobs for both user downtime and shop downtime.
 
-![Downtime by job type user](images/downtime_by_job_type_user.png)
+<img width="989" height="590" alt="image" src="https://github.com/user-attachments/assets/26b556a8-6b4b-446a-953d-2df4acab1829" />
 
-![Downtime by job type shop](images/downtime_by_job_type_shop.png)
+
+<img width="989" height="590" alt="image" src="https://github.com/user-attachments/assets/7c5a09c9-fcd8-46d6-8bca-caac05ab8ba1" />
+
 
 The analysis showed:
 
@@ -182,15 +174,17 @@ Each vehicle was grouped using a PM ratio:
 PM ratio = PM work orders / total work orders
 ```
 
+<img width="1589" height="490" alt="image" src="https://github.com/user-attachments/assets/d1274d17-ac52-4313-886d-558b28549fdd" />
+
+
 Vehicles were then placed into three PM activity bands:
 
 - Low PM
 - Medium PM
 - High PM
 
-![Average repair cost by PM activity band](images/avg_repair_cost_by_pm_band.png)
+<img width="713" height="470" alt="image" src="https://github.com/user-attachments/assets/f14b2a7a-484d-4a1b-b600-feaf3a12afac" />
 
-![Median repair cost by PM activity band](images/median_repair_cost_by_pm_band.png)
 
 The result showed a clear pattern:
 
@@ -214,7 +208,8 @@ The business interpretation is:
 
 The same PM ratio was compared with repair downtime.
 
-![PM ratio vs repair downtime](images/pm_ratio_vs_repair_downtime.png)
+<img width="1589" height="590" alt="image" src="https://github.com/user-attachments/assets/149db34f-07f6-48af-bc64-65d989539b80" />
+
 
 The relationship between PM ratio and repair cost was clearer than the relationship between PM ratio and downtime.
 
@@ -239,9 +234,11 @@ The next part of the analysis looked at repair reasons.
 
 Normal wear appeared as the highest repair reason by both work-order count and total cost.
 
-![Top 10 repair reasons by count](images/top_10_repair_reason_count.png)
+<img width="1015" height="590" alt="image" src="https://github.com/user-attachments/assets/d0aa07d9-6e21-401e-9eab-833fb2d7cf00" />
 
-![Top 10 repair reasons by total cost](images/top_10_repair_reason_cost.png)
+
+<img width="1016" height="590" alt="image" src="https://github.com/user-attachments/assets/d1c58d14-0dc6-4b4b-aede-34397c287e0e" />
+
 
 This is important for AutoSense because normal wear is exactly the type of issue that a predictive maintenance system should help manage better.
 
@@ -275,8 +272,6 @@ Recommendation:
 
 Normal-wear repair costs were also analysed by department.
 
-![Normal wear cost by department](images/normal_wear_cost_by_department.png)
-
 Top departments by normal-wear total cost included:
 
 | Department | Work Orders | Total Cost | Average Cost | Downtime |
@@ -296,33 +291,6 @@ For example:
 - Emergency response fleets may need stronger uptime monitoring
 - Police fleets may need usage-adjusted maintenance planning due to high work-order volume
 - Operations fleets may need normal-wear monitoring and route/usage review
-
----
-
-## 7. Vehicle usage contributes to normal-wear cost, but does not fully explain it
-
-The project also explored whether vehicles with higher meter life totals had higher normal-wear repair cost.
-
-![Vehicle usage vs normal-wear repair cost](images/vehicle_usage_vs_normal_wear_cost.png)
-
-The scatter plot showed that usage alone does not cleanly explain normal-wear cost. There were high-cost vehicles across different usage levels.
-
-To improve readability, vehicles were grouped into usage bands.
-
-![Normal wear cost distribution by usage band](images/normal_wear_cost_distribution_by_usage_band.png)
-
-Usage band summary:
-
-| Usage Band | Vehicle Count | Average Normal-Wear Cost | Median Normal-Wear Cost | Average Normal-Wear Count |
-|---|---:|---:|---:|---:|
-| Low usage | 965 | 1,105.87 | 235.30 | 3.53 |
-| Medium-low usage | 965 | 4,868.01 | 2,023.94 | 13.53 |
-| Medium-high usage | 964 | 7,735.82 | 2,836.93 | 14.78 |
-| High usage | 965 | 14,545.60 | 5,426.59 | 30.30 |
-
-Higher usage bands generally had higher normal-wear cost, which makes sense operationally. However, some vehicles had unusually high cost relative to their meter values.
-
-A limitation found here is that some meter readings appear unrealistic or very low, which makes cost-per-usage calculations unstable. This is a data quality issue and should be addressed before using meter-adjusted KPIs in production.
 
 ---
 
