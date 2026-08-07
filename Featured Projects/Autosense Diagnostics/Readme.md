@@ -156,5 +156,5 @@ After redesigning the pipeline:
 
 The final model achieved a cross-validation macro F1 score of approximately:
 
-```text
-0.855 ± 0.041
+
+0.855 ± 0.035
