@@ -91,25 +91,23 @@ This produced an almost perfect model score.
 
 Although the result initially appeared promising, the near-perfect performance raised concerns. Scores this high can sometimes indicate that the model is relying on duplicate observations, strong dependencies, or patterns that may not generalise outside the original dataset.
 
-For that reason, additional validation was performed before accepting the result.
+For that reason, additional validation was performed before I accepted the result.
 
 ---
 
 ## Model Validation
 
-The model was tested using several diagnostic approaches:
+The model was tested using several approaches:
 
 - Label shuffle testing
 - Data leakage checks
 - Duplicate and dependency analysis
 - Overfitting checks
 
-The results showed no clear leakage or overfitting. However, the model exhibited strong data dependency.
+The results showed no clear leakage or overfitting. However, the shuffle test remained unusually high.
 <img width="555" height="273" alt="image" src="https://github.com/user-attachments/assets/ac7a4d09-12b4-4bc3-9b05-c081d041244c" />
 
-However, the shuffle test remained unusually high.
-
-When target labels are shuffled, the relationship between the predictors and target should be broken. A model should then perform close to random guessing. The stronger-than-expected shuffle result suggested that the observations were not fully independent.
+When target labels are shuffled, the relationship between the predictors and target should be reduced. A model should then perform close to random guessing. The stronger-than-expected shuffle result suggested that the observations were not fully independent.
 
 The model was likely learning dataset-specific structures, such as highly similar operating conditions or groups of closely related observations, rather than relationships that would reliably generalise to new vehicles.
 
@@ -121,19 +119,7 @@ In order to counteract this, K-means grouping was performed. I clustered the dat
 
 ---
 
-## Pipeline Redesign
-
-To reduce dependency and produce a more credible evaluation, the modelling pipeline was redesigned.
-
-### Feature Review
-
-Some engineered variables were removed because they appeared to strengthen patterns that were already present in the original variables.
-
-While feature engineering can improve performance, it can also amplify dataset-specific relationships. Removing these features helped determine whether the model could learn directly from the original sensor measurements.
-
 ### Principal Component Analysis
-
-Principal Component Analysis was applied to reduce dimensionality and control multicollinearity between the sensor variables.
 
 <img width="1035" height="669" alt="image" src="https://github.com/user-attachments/assets/f22d542b-b1f3-46fc-bada-cf76635b175b" />
 
@@ -141,7 +127,7 @@ The first four principal components retained approximately **83.4% of the total 
 
 This reduced redundancy while preserving most of the information contained in the original sensor readings.
 
-### Group-Based Validation
+### K-means Grouping
 
 The redesigned pipeline used grouped validation rather than relying only on a standard random train-test split.
 
@@ -156,13 +142,12 @@ The revised approach prioritised:
 
 ---
 
-## Results
+## Final Result using Cross-validation 
 
 After redesigning the pipeline:
 
 - The label shuffle macro F1 score dropped to approximately **0.27**
 - Model performance became more realistic
-- The gap between genuine and shuffled-label performance became clearer
 - Dependency between training and testing observations was reduced
 - Cross-validation produced more credible estimates of generalisation
 
