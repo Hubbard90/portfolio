@@ -29,6 +29,19 @@ SQL was used to:
 - consolidate monthly correlation results using Fisher's z-transformation
 - investigate extreme wholesale price movements
 
+### Dynamic Peak-Hour Identification
+
+Rather than hard-coding a single morning and evening peak hour across the entire dataset, peak hours were identified dynamically for each month.
+
+Average electricity demand was calculated for every hour within the defined morning and evening peak windows. A SQL window function was then used to rank each hour by average demand within its respective month and peak period.
+
+```sql
+ROW_NUMBER() OVER (
+    PARTITION BY month, peak_period
+    ORDER BY avg_demand DESC
+) AS demand_rank
+```
+
 ## Key Findings
 
 ### 1. Demand and wholesale price are moderately related during peak periods
