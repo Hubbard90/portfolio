@@ -70,21 +70,9 @@ Monitoring recurring morning and evening peak windows could help commercial team
 
 ## Dashboard
 
-Add a screenshot of the Power BI dashboard here:
+<img width="1427" height="751" alt="Screenshot 2026-09-02 135507" src="https://github.com/user-attachments/assets/99c30c3c-61e4-4130-852c-55053bdd50ff" />
 
-```markdown
-![Victorian Electricity Market Dashboard](images/dashboard.png)
-```
 
-Suggested dashboard components:
-
-- average and maximum RRP
-- average and peak demand
-- demand and RRP by hour
-- monthly peak-period comparison
-- demand vs RRP scatter plot
-- extreme price-event monitoring
-- interactive month and hour filters
 
 ## Example SQL Analysis
 
