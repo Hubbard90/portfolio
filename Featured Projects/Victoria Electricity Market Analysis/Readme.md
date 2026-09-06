@@ -48,7 +48,9 @@ ROW_NUMBER() OVER (
 
 After identifying the highest-demand morning and evening hours for each month, the analysis found a moderate positive relationship between total demand and RRP during both peak periods.
 
-The relationship was slightly stronger during the morning peak than during the evening peak.
+The aggregated correlation was 0.561 for morning peaks and 0.521 for evening peaks, indicating that higher demand generally coincided with higher wholesale prices, although the relationship was not strong enough to suggest that demand alone determines RRP.
+
+Because correlations were calculated separately for each month's identified peak hours, Fisher's z-transformation was used to combine the monthly correlation coefficients. Each Pearson correlation was first converted to Fisher's z scale, where correlations can be aggregated more appropriately, before being transformed back into a final overall correlation coefficient for the morning and evening peak periods.
 
 ### 2. Evening peaks are more expensive
 
@@ -58,14 +60,19 @@ Across the eight months analysed:
 |---|---:|---:|
 | Average Peak Demand | ~5,866 MW | ~6,640 MW |
 | Average RRP | ~$61.48/MWh | ~$87.40/MWh |
+| Demand-RRP Correlation | 0.561 | 0.521 |
 
-Evening periods therefore experienced both higher electricity demand and substantially higher wholesale prices.
+Evening periods experienced both higher electricity demand and substantially higher wholesale prices. However, the correlation between demand and RRP was slightly lower during the evening peak than during the morning peak.
+
+This is an important finding. Although evening demand and RRP were both higher, the weaker correlation suggests that demand alone does not fully explain the higher evening prices. Other market conditions, such as generation availability, renewable output, outages, interconnector constraints or other supply-side factors, may also contribute to higher RRP during these periods.
 
 ### 3. Demand does not fully explain extreme price spikes
 
 The largest RRP spikes tended to occur around peak-demand periods, but demand and price did not move together consistently enough to explain the size of these events.
 
-This suggests that additional market conditions contribute to extreme wholesale pricing.
+This is particularly visible in the evening peak results. Evening periods had higher average demand and considerably higher average RRP than morning periods, yet the demand-RRP correlation was slightly weaker at 0.521 compared with 0.561 in the morning.
+
+This suggests that external market conditions are likely contributing to evening price movements in addition to demand. Generation availability, renewable output, outages, interconnector constraints and other supply-side conditions may therefore be important variables to include in future analysis.
 
 ## Business Implications
 
@@ -130,7 +137,11 @@ WHERE demand_rank = 1;
 
 ## Conclusion
 
-The analysis found a moderate positive relationship between electricity demand and wholesale prices during both morning and evening peak periods. Evening peaks were associated with higher average demand and substantially higher RRP, making them particularly important from a commercial perspective.
+The analysis found a moderate positive relationship between electricity demand and wholesale prices during both morning and evening peak periods. Using Fisher's z-transformation to aggregate monthly peak-period correlations, the overall demand-RRP relationship was estimated at 0.561 for morning peaks and 0.521 for evening peaks.
+
+Evening peaks were associated with higher average demand and substantially higher RRP, despite showing a slightly weaker correlation between the two variables. This suggests that demand is an important driver of wholesale prices, but it does not fully explain the higher prices observed during evening peak periods.
+
+Other market conditions, including generation availability, renewable output, outages and interconnector constraints, are likely to influence RRP and should be incorporated into future analysis.
 
 In the short term, these findings can support peak-period monitoring, demand-response initiatives and pricing decisions. In the longer term, combining demand data with generation mix, renewable output, outages, weather and interconnector conditions could improve forecasting and provide a stronger basis for procurement and market-risk decisions.
 
